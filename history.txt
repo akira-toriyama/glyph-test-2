@@ -1,1 +1,2 @@
 update app
+tweak readme wording
