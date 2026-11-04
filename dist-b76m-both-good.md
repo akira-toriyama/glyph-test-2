@@ -1,0 +1,1 @@
+probe both-good
