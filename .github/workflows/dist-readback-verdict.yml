@@ -1,0 +1,12 @@
+name: dist-readback-verdict
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  verdict:
+    uses: akira-toriyama/glyph/.github/workflows/pr-verdict.yml@b76m/lint-gate-wiring
+    with:
+      glyph-version: v6.1.0
