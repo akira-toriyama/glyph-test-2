@@ -14,4 +14,4 @@ jobs:
   verdict:
     uses: ./.github/workflows/dist-verdict-reusable.yml
     with:
-      glyph-version: v6.1.0
+      glyph-version: v0.0.0
