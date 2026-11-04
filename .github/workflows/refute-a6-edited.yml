@@ -1,0 +1,14 @@
+name: refute-a6-edited-control
+on:
+  pull_request:
+    types: [edited]
+permissions:
+  contents: read
+jobs:
+  seen:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          TITLE: ${{ github.event.pull_request.title }}
+          ACTION: ${{ github.event.action }}
+        run: printf 'action=%s title=%s\n' "$ACTION" "$TITLE"
