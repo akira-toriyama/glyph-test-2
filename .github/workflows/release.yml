@@ -1,0 +1,17 @@
+name: release
+on:
+  push: { branches: [main] }
+  workflow_dispatch:
+    inputs:
+      dry_run: { description: "Preview only", type: boolean, default: false }
+concurrency: { group: release, cancel-in-progress: false }
+permissions: { contents: write }
+jobs:
+  release:
+    uses: akira-toriyama/glyph/.github/workflows/release.yml@v6.1.0  # pin a release tag
+    with:
+      dry-run: ${{ github.event.inputs.dry_run == 'true' }}
+      install-notes: |
+        ## Install
+
+        Nothing to install: this repository ships Markdown only.
