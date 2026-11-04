@@ -1,3 +1,3 @@
 # app
 
-Hello.
+Hello, world.
