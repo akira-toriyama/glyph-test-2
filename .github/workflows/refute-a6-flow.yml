@@ -1,0 +1,13 @@
+name: refute-a6-flow-unquoted
+on:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: akira-toriyama/glyph/.github/actions/install@v6.1.0
+        with: { version: v6.1.0, token: ${{ github.token }} }
+      - run: glyph version --json
