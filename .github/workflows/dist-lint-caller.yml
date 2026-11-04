@@ -1,0 +1,14 @@
+name: dist-lint-caller
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, edited]
+  push:
+    branches: ['dist-b76m-push-arm']
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  lint:
+    uses: ./.github/workflows/dist-lint-reusable.yml
+    with:
+      glyph-version: v6.1.0

@@ -1,0 +1,17 @@
+name: dist-verdict-caller
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: ['dist-b76m-push-arm']
+concurrency:
+  group: dist-verdict-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+  pull-requests: write
+jobs:
+  verdict:
+    uses: ./.github/workflows/dist-verdict-reusable.yml
+    with:
+      glyph-version: v6.1.0
