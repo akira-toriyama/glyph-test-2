@@ -1,0 +1,18 @@
+# Probe caller for glyph unit wh0w (lint differential): README's lint caller,
+# pinned to the reusable at one commit with the v6.1.0 release binary.
+# Lives on wh0w-* branches only and is deleted with them.
+name: wh0w-lint
+on:
+  pull_request:
+    # a retitle re-fires the squash-title lint only with `edited`, not a default type
+    types: [opened, synchronize, reopened, edited]
+  push:
+    branches: [wh0w-push]
+permissions:
+  contents: read
+  pull-requests: read  # the squash-title lint reads GET /pulls/{n}
+jobs:
+  lint:
+    uses: akira-toriyama/glyph/.github/workflows/lint.yml@c06e4268025b92854c23edd40fbf08ab5860b19f
+    with:
+      glyph-version: v6.1.0
