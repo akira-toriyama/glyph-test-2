@@ -1,0 +1,7 @@
+name: g2m-j4-dq
+on: workflow_dispatch
+permissions:
+  contents: read
+jobs:
+  call:
+    "uses": akira-toriyama/glyph-test-2/.github/workflows/g2m-reusable.yml@a14fbafc7968072c6d80568cf95d1c3d48fec7d9
