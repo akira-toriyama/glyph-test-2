@@ -1,0 +1,12 @@
+name: live2-s0
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - run: rm README.md && test ! -f README.md
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - run: test -f README.md

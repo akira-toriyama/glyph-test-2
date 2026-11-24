@@ -1,0 +1,8 @@
+name: live2-m3
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  first: &j
+    uses: akira-toriyama/glyph-test-2/.github/workflows/live2-reusable.yml@80122c437f195e7cc58e009d560c1a779d3b2a05
+  second: *j

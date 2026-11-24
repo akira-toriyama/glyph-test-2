@@ -1,0 +1,13 @@
+name: live2-m4
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - &s
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - run: rm README.md && test ! -f README.md
+      - <<: *s
+      - run: test -f README.md
