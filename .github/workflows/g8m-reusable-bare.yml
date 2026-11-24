@@ -1,0 +1,7 @@
+name: g8m-reusable-bare
+on: workflow_call
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "g8m bare reusable ran"
