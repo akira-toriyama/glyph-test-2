@@ -1,0 +1,4 @@
+name: g8m-p7-flow-perm
+on: pull_request
+jobs:
+  call: {uses: akira-toriyama/glyph-test-2/.github/workflows/g8m-reusable-bare.yml@29f2cf6afdaf101a1892a375f8fa7efa951fd438, permissions: {contents: read}}

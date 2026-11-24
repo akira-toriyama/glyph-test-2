@@ -1,0 +1,10 @@
+name: g8m-s5-flow-anchor
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - {uses: &co actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683}
+      - run: test -f README.md
