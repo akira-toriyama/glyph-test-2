@@ -1,0 +1,8 @@
+name: live1-k1
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  call:
+    ? uses
+    : akira-toriyama/glyph-test-2/.github/workflows/live1-reusable.yml@bd8ac9624b5182a6aa0de4b0b23b4ac971d941be

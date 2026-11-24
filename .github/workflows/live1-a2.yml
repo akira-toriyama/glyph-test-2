@@ -1,0 +1,33 @@
+name: live1-a2
+on: pull_request
+permissions:
+  contents: read
+jobs:
+  mutations-shard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
+    env:
+      MUTATIONS_SHARD: ${{ matrix.shard }}/4
+    steps:
+      - run: |
+          if [ "$MUTATIONS_SHARD" = 2/4 ]; then sleep 100; fi
+          echo "shard $MUTATIONS_SHARD ok"
+  mutations:
+    needs: mutations-shard
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: every shard bit
+        env:
+          SHARDS: ${{ needs.mutations-shard.result }}
+        run: |
+          if [ "$SHARDS" != success ]; then
+            echo "mutations: the ledger's shards ended '$SHARDS', not success — the mutations-shard runs say which" >&2
+            exit 1
+          fi
+
